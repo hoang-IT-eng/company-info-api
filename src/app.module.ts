@@ -8,6 +8,8 @@ import configuration from './config/configuration'
 import { CompanyModule } from './company/company.module'
 import { LocationModule } from './location/location.module'
 import { IndustryModule } from './industry/industry.module'
+import { AppController } from './app.controller'
+import { AppService } from './app.service'
 
 @Module({
   imports: [
@@ -29,7 +31,9 @@ import { IndustryModule } from './industry/industry.module'
     LocationModule,
     IndustryModule,
   ],
+  controllers: [AppController],
   providers: [
+    AppService,
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
