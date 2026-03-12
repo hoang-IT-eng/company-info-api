@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: company-info-api
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: EXTERNAL_API_BASE_URL
+        value: https://thongtindoanhnghiep.co
+      - key: FRONTEND_URL
+        sync: false
