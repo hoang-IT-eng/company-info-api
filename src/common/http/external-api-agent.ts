@@ -35,7 +35,7 @@ export const externalHttpsAgent = new https.Agent({
     resolveHost(hostname)
       .then((addresses) => {
         if (!addresses.length) {
-          callback(new Error(`DNS lookup failed for ${hostname}`))
+          callback(new Error(`DNS lookup failed for ${hostname}`) as NodeJS.ErrnoException, '')
           return
         }
 
@@ -53,6 +53,6 @@ export const externalHttpsAgent = new https.Agent({
         const address = addresses[0]
         callback(null, address, address.includes(':') ? 6 : 4)
       })
-      .catch((error) => callback(error))
+      .catch((error) => callback(error as NodeJS.ErrnoException, ''))
   },
 })
